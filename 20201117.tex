@@ -1,0 +1,161 @@
+\documentclass[11pt,a4j]{jarticle}
+
+% プリアンブル
+\title{相対論的運動学}
+\author{島崎奉文}
+\date{2020/11/10}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{bm}
+\usepackage{amsmath}
+\graphicspath{{./picture/}}
+
+\begin{document}
+% タイトルを出力
+\maketitle
+
+\section{ローレンツ変換}
+\begin{itemize}
+\item 慣性系$S, \, S^{\prime} $があり、$ S^{\prime} $が$ S $に対して$x$軸方向に速度 $v$で動いているとき、
+ローレンツ変換は以下で与えられる．
+	\[
+		\left(
+		\begin{array}{cccc}
+			ct^{\prime} \\
+			x^{\prime} \\
+			y^{\prime} \\
+			z^{\prime}
+		\end{array}
+ 		\right) = \left(
+		\begin{array}{cccc}
+			\gamma & -\gamma \beta & 0 & 0 \\
+			-\gamma \beta & \gamma & 0 & 0 \\
+			0 & 0 & 1 & 0 \\
+			0 & 0 & 0 & 1
+		\end{array}
+		\right) \left(
+		\begin{array}{cccc}
+			ct \\
+			x \\
+			y \\
+			z
+		\end{array}
+		\right)
+	\]
+\item ローレンツ変換からの重要な帰結
+	\begin{enumerate}
+	\item 同時の相対性：点A, Bについて、系$S$において$t_A = t_B$とすると、系$S^{\prime}$では
+		\[
+			t_A^{\prime} = t_B^{\prime} + \frac{\gamma v}{c^2}(x_B - x_A)
+		\]
+	\item ローレンツ収縮：系$S^{\prime}$で$x$軸方向に長さ$L^{\prime}$の棒は、系$S$では$L = L^{\prime} / \gamma$
+	\item 時間の遅れ：系$S^{\prime}$の原点に位置する時計の時間間隔$d\tau$は、系$S$では$dt = \gamma d\tau$
+	\item 速度の足し算：粒子が系$S^{\prime}$に対して$x$軸方向に速度$u^{\prime}$で動いているとき、系$S$では
+		\[
+			u = \frac{u^{\prime}+v}{1+u^{\prime}v/c^2}
+		\]
+	
+	\end{enumerate}
+\end{itemize}
+
+\section{4元ベクトル}
+\begin{itemize}
+\item （反変）4元ベクトル$x^{\mu} = (ct, \,x, \,y, \,z)$を定義し、ローレンツ変換の係数行列を${\Lambda^{\mu}}_{\nu}$とすると、
+上のローレンツ変換の式はアインシュタインの縮約記法を用いて以下のように表せる．
+	\[
+		{x^{\mu}}^{\prime} = {\Lambda^{\mu}}_{\nu} x^{\nu}
+	\]
+\item 計量テンソル$g_{\mu \nu}$を
+	\[
+		g^{\mu \nu} = 
+		\left(
+		\begin{array}{cccc}
+			1 & 0 & 0 & 0 \\
+			0 & -1 & 0 & 0 \\
+			0 & 0 & -1 & 0 \\
+			0 & 0 & 0 & -1
+		\end{array}
+	 	\right)
+	\]
+と定義すると、$I = g_{\mu \nu}x^{\mu}x^{\nu}$は（ローレンツ変換で移れる）どの慣性系に対しても不変な量となる．
+このような物理量をローレンツ不変量という．
+\item 共変4元ベクトル$x_{\mu}$を
+	\[
+		x_{\mu} = g_{\mu \nu}x^{\nu} = (ct, \,-x, \,-y, \,-z)
+	\]
+で定義すると、上のローレンツ不変量は$I = x_{\mu}x^{\mu}$と書ける．
+\item 4元ベクトル$x^{\mu}$と同じ変換をする4元ベクトルを反変ベクトル$a^{\mu}$、
+その空間成分の符号を反転させたベクトルを共変ベクトル$a_{\mu}$と定義する．
+	\[
+		{a^{\mu}}^{\prime} = {\Lambda^{\mu}}_{\nu}x^{\nu}, \ \ a_{\mu} = g_{\mu \nu}x^{\nu}
+	\]
+任意の$a^{\mu}, \,b^{\mu}$に対して、物理量$a^{\mu}b_{\mu} = a_{\mu}b^{\mu}$はローレンツ不変な量となる．
+\item 4元ベクトル$a^{\mu}$を、$a^2 = a_{\mu}a^{\mu} = ({a^0})^2 - {\bm{a}}^2$の値で分類する．
+	\begin{eqnarray*}
+		a^2 > 0 のとき、時間的 \\
+		a^2 = 0 のとき、光子的 \\
+		a^2 < 0 のとき、空間的
+	\end{eqnarray*}
+\item スカラーを0階のテンソル、ベクトルを1階のテンソルとみなし、2階以上のテンソルも同様の変換性で定義する．
+	\[
+		{s^{\mu \nu}}^{\prime} = {\Lambda^{\mu}}_{\kappa}{\Lambda^{\nu}}_{\sigma}s^{\kappa \sigma}, \ \ 
+		{s^{\mu}}_{\nu} = g_{\nu \lambda}s^{\mu \lambda}
+	\]
+また、テンソルの積や縮約によって別のテンソルが得られる．
+	\[
+		a^{\mu}b^{\nu}は2階のテンソル, \ \ {s^{\mu}}_{\mu}はテンソル, \ \ {t^{\mu \nu}}_{\nu}はベクトル（1階のテンソル）
+	\]
+\end{itemize}
+
+\section{運動量とエネルギー}
+\begin{itemize}
+	\item 通常の速度$\bm{v} = \frac{\mbox{実験室で測定した移動距離}}{\mbox{実験室系の時間}} = \dfrac{d\bm{x}}{dt}$に対して、
+	固有（4元）速度$\bm{\eta} = \frac{\mbox{実験室で測定した移動距離}}{\mbox{固有時間}} = \dfrac{d\bm{x}}{d\tau}$を定義する．
+	ここで$\bm{\eta} = \gamma \bm{v}$．
+	\item さらに、4元ベクトル$\eta^{\mu} = \dfrac{dx^{\mu}}{d\tau} = \gamma(c, \,\bm{v})$を定義すると上の4元速度はこの空間成分となる．
+	ここで、$\eta_{\mu}\eta^{\mu} = c^2$はローレンツ不変となっている．
+	\item 相対論的な運動量を$\bm{p}=m\bm{\eta}$と定義する（こうすることで運動量保存則が相対性原理と矛盾しない）．
+	\item 固有速度と同様に4元ベクトル$p^{\mu} = m\eta^{\mu} ＝ (\gamma mc, \, \bm{p})$を定義すると、上の運動量はこの空間成分となる．
+	時間成分に対して$E = \gamma mc^2$と定義すると、これのテイラー展開が
+	\[
+		E = \frac{mc^2}{\sqrt{1-v^2 / c^2}} = mc^2(1+\frac{1}{2}\frac{v^2}{c^2}+\frac{3}{8}\frac{v^4}{c^4}+\cdots)
+		  = mc^2 + \frac{1}{2}mv^2 + \frac{3}{8}m\frac{v^4}{c^2} + \cdots
+	\]
+	となることから$E$は相対論的なエネルギーとみなせる．$E$の第1項めを静止エネルギー、第2項め以降を相対論的な運動エネルギーという．
+	\item $p_{\mu}p^{\mu} = E^2 / c^2 - {\bm{p}}^2 = m^2c^2$はローレンツ不変になっている．
+	速度が$c$のとき、同時に$m=0$ならば$\bm{p}$と$E$は不定になり運動量とエネルギーを決定できなくなるが、この関係式は常に成立する． \\
+	質量0の光子の場合、速度は常に$c$で、エネルギーはプランクの式$E = h\nu$によって与えられる．
+\end{itemize}
+
+\section{衝突}
+\begin{itemize}
+	\item 衝突には以下の3種類あり、いずれにおいても運動量は保存される．
+	\begin{table}[htb]
+		\centering
+		\begin{tabular}{|l|l|l|} \hline
+			衝突種類　&　古典論	&　相対論	\\ \hline
+			粘性(運動エネルギー減少)　&　内部エネルギー増加　&　静止エネルギー増加　\\ \hline
+			爆発(運動エネルギー増加)　&　内部エネルギー減少　&　静止エネルギー減少　\\ \hline
+			弾性(運動エネルギー不変)　&　内部エネルギー不変　&　静止エネルギー不変	\\ \hline
+		\end{tabular}
+	\end{table}
+	\item 衝突問題のエッセンスは以下．
+	\begin{enumerate}
+		\item 粘性散乱の場合、運動エネルギーが静止エネルギーに変換されるため質量は増加する
+		\[
+			\includegraphics[width=8cm,clip]{粘性散乱.jpg}
+		\]
+		\item 静止している粒子が二つの粒子に崩壊する場合、初期状態のエネルギーは終状態の静止エネルギーを越えていなければならない．
+		\[
+			\includegraphics[width=8cm,clip]{崩壊.jpg}
+		\]
+		\item 重心系、保存量、（ローレンツ）不変量などをうまく使うことで計算量を減らすことができる．
+		\item 粒子を互いに運動エネルギー$T$で正面衝突させた場合、相対論的な運動エネルギー$T^{\prime}$は、
+		\[
+			T^{\prime} = 4T \left( 1 + \frac{T}{2mc^2} \right)
+		\]
+		となり、第2項により効率がいい．
+	\end{enumerate}
+\end{itemize}
+
+
+\end{document}
